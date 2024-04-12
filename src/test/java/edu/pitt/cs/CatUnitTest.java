@@ -1,14 +1,13 @@
 package edu.pitt.cs;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
-import org.junit.FixMethodOrder;
-import org.junit.runners.MethodSorters;
 import static org.junit.Assert.*;
 
-import org.mockito.Mockito;
-import static org.mockito.Mockito.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.FixMethodOrder;
+import org.junit.runners.MethodSorters;
+import org.mockito.*;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class CatUnitTest {
@@ -32,6 +31,8 @@ public class CatUnitTest {
 		// Passing InstanceType.MOCK as the first parameter will create a mock cat using Mockito.
 		// Which type is the correct choice for this unit test?  I'll leave it up to you.  The answer is in the Unit Testing Part 2 lecture. :)
 		// TODO: Fill in
+		// Since this is a unit test for Cat, we use an actual Cat instance, not a mock.
+		c = Cat.createInstance(InstanceType.IMPL, 1, "Jennyanydots");
 	}
 
 	@After
@@ -53,6 +54,7 @@ public class CatUnitTest {
 	@Test
 	public void testGetId() {
 		// TODO: Fill in
+		assertEquals("The ID should be 1", 1, c.getId());
 	}
 
 	/**
@@ -61,12 +63,13 @@ public class CatUnitTest {
 	 * <pre>
 	 * Preconditions: c has been created with ID 1, and name "Jennyanydots".
 	 * Execution steps: Call c.getName().
-	 * Postconditions: Return value is "Jennyanydots".
+	 * Postconditions: Return value is 1.
 	 * </pre>
 	 */
 	@Test
 	public void testGetName() {
 		// TODO: Fill in
+		assertEquals("The name should be Jennyanydots", "Jennyanydots", c.getName());
 	}
 
 	/**
@@ -81,6 +84,7 @@ public class CatUnitTest {
 	@Test
 	public void testGetRented() {
 		// TODO: Fill in
+		assertFalse("Initially, cat should not be rented", c.getRented());
 	}
 
 	/**
@@ -95,6 +99,7 @@ public class CatUnitTest {
 	@Test
 	public void testToString() {
 		// TODO: Fill in
+		assertEquals("The toString method should return the correct string", "ID 1. Jennyanydots", c.toString());
 	}
 
 	/**
@@ -110,6 +115,8 @@ public class CatUnitTest {
 	@Test
 	public void testRentCat() {
 		// TODO: Fill in
+		c.rentCat();
+    	assertTrue("After renting, cat should be marked as rented", c.getRented());
 	}
 
 	/**
@@ -126,6 +133,10 @@ public class CatUnitTest {
 	@Test
 	public void testReturnCat() {
 		// TODO: Fill in
+		c.rentCat(); // Precondition setup.
+		c.returnCat();
+		assertFalse("After returning, cat should not be rented(should be returned)", c.getRented());
+
 	}
 
 	/**
@@ -141,6 +152,10 @@ public class CatUnitTest {
 	@Test
 	public void testRenameCat() {
 		// TODO: Fill in
+		c.renameCat("Garfield");
+		assertEquals("After renaming, getName should return the new name", "Garfield", c.getName());
+		assertEquals("After renaming, toString should reflect the new name", "ID 1. Garfield", c.toString());
+
 	}
 
 }
