@@ -6,7 +6,7 @@
 
   <groupId>io.github.wonsunahn</groupId>
   <artifactId>cs1632-cicd-pipelines-haw135</artifactId>
-  <version>2.0</version>
+  <version>1.0</version>
   <packaging>jar</packaging>
 
   <name>cs1632-cicd-junit</name>
@@ -49,7 +49,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
     <maven-javadoc-plugin.version>3.6.3</maven-javadoc-plugin.version>
-    <sonar.projectKey>io.github.wonsunahn.cs1632-cicd-pipelines-haw135</sonar.projectKey>
+    <!-- <sonar.projectKey>io.github.wonsunahn.cs1632-cicd-pipelines-haw135</sonar.projectKey> -->
     <sonar.organization>cs1632-spring2024</sonar.organization>
     <sonar.host.url>https://sonarcloud.io</sonar.host.url>
   </properties>
